@@ -151,6 +151,10 @@ autoplot.survfit <- function(object, fun = NULL,
     conf.int.fill <- surv.colour
   }
 
+  if (missing(censor.colour) & !is.null(surv.colour)) {
+    censor.colour <- surv.colour
+  }
+
   geomfunc <- get_geom_function(surv.geom, allowed = c('step', 'line', 'point'))
 
   p <- ggplot(data = plot.data, mapping = mapping) +
